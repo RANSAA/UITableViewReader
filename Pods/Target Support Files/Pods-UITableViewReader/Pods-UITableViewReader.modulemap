@@ -1,0 +1,6 @@
+framework module Pods_UITableViewReader {
+  umbrella header "Pods-UITableViewReader-umbrella.h"
+
+  export *
+  module * { export * }
+}
