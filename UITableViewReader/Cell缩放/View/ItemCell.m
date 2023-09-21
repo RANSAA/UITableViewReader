@@ -74,6 +74,8 @@
 // 缩放时调用
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
+    //控制缩放时居中
+    _zoomView.zoomImageView.center = self.center;
     NSLog(@"缩放中。。。。scale:%f",_zoomView.zoomScale);
     NSLog(@"缩放中。。。。zoomView contentSize:%@",NSStringFromCGSize(_zoomView.contentSize));
     NSLog(@"缩放中。。。。zoomImageView frame:%@",NSStringFromCGRect(_zoomView.zoomImageView.frame));

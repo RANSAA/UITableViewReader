@@ -56,8 +56,13 @@
     [self.view addSubview:_scrollView];
     _scrollView.contentSize = self.view.frame.size;
 
-
+    //对资源文件的比例缩放计算
     width  = [UIScreen mainScreen].bounds.size.width/1700;
+//    NSLog(@"width:%f",width);
+////    width = self.view.window.windowScene.screen.bounds.size.width/1700;
+//    NSLog(@"width:%f",width);
+//    NSLog(@"windowScene:%@",self.view.window.windowScene);
+//    NSLog(@"screen:%@",[UIApplication sharedApplication].connectedScenes);
     height = width*2408;
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -67,6 +72,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [_scrollView addSubview:_tableView];
+
 
 
 }
@@ -110,6 +116,10 @@
 // 缩放时调用
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
+    //控制缩放时居中
+    _tableView.center = self.view.center;
+
+    
     NSLog(@"缩放中。。。。scale:%f",_scrollView.zoomScale);
     NSLog(@"缩放中。。。。_scrollView contentSize:%@",NSStringFromCGSize(_scrollView.contentSize));
     NSLog(@"缩放中。。。。_tableView frame:%@",NSStringFromCGRect(_tableView.frame));
